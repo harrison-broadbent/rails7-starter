@@ -1,0 +1,16 @@
+
+<div class="flex flex-col">
+
+  <h1 class="font-bold">LetterKit Reactions</h1>
+
+
+  <% if current_user %>
+    <h3><%= current_user.name %></h3>
+    <h3><%= current_user.email %></h3>
+    <%= image_tag(current_user.image) unless current_user.image.nil? %>
+    <%= button_to "Sign Out", destroy_user_session_path %>
+  <% else %>
+    <%= button_to "Sign in with Google", omniauth_authorize_path(:user, :google_oauth2), :data => {turbo: "false"} %>
+  <% end %>
+
+</div>
